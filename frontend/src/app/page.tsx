@@ -1,3 +1,9 @@
+import { Button } from "@shadcn/button";
+
 export default function Page() {
-	return <div>Welcome to Nodebase</div>;
+	return (
+		<div>
+			Subscribe to <Button>Nodebase</Button>
+		</div>
+	);
 }
