@@ -1,0 +1,21 @@
+services:
+    postgres:
+        image: postgres:latest
+        container_name: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: localhost-chetan
+            POSTGRES_PASSWORD: ChetanSeervi_2361
+            POSTGRES_DB: nodebase
+        ports:
+            - "5432:5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U localhost-chetan"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+volumes:
+    pgdata:

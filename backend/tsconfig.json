@@ -3,6 +3,12 @@
 		"strict": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "hono/jsx",
-		"lib": ["ESNext"]
+		"lib": ["ESNext"],
+		"paths": {
+			"@/*": ["./src/*"],
+			"@db/*": ["./src/db/*"],
+			"@lib/*": ["./src/lib/*"],
+			"@utils/*": ["./src/utils/*"]
+		}
 	}
 }
