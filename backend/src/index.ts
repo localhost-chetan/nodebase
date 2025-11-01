@@ -6,4 +6,7 @@ app.get('/', (c) => {
   return c.text('Welcome to Nodebase')
 })
 
-export default app
+export default {
+  fetch: app.fetch,
+  port: process.env.PORT || 3001,
+}

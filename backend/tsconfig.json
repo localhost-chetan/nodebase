@@ -2,6 +2,21 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "target": "ESNext",
+    "lib": [
+      "ES7"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ]
+    }
   }
 }
