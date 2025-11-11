@@ -4,12 +4,16 @@
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "target": "ESNext",
+    "module": "esnext",
     "lib": [
       "ES7"
     ],
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@db/*": [
+        "./src/db/*"
       ],
       "@utils/*": [
         "./src/utils/*"
