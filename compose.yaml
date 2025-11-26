@@ -1,22 +1,57 @@
 services:
-  postgres:
-    image: postgres:17.6
-    container_name: postgres
-    restart: unless-stopped
-    ports:
-        - "${POSTGRES_PORT}:5432"
-    environment:
-        POSTGRES_USER: ${POSTGRES_USER}
-        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-        POSTGRES_DB: ${POSTGRES_DB}
-    volumes:
-        - pgdata:/var/lib/postgresql/data
-    healthcheck:
-        test: ["CMD-SHELL", "pg_isready ---user localhost-chetan --dbname nodebase"]
-        interval: 10s
-        timeout: 5s
-        retries: 5
+    postgres:
+        image: postgres:17.6
+        container_name: postgres
+        restart: unless-stopped
+        ports:
+            - "${POSTGRES_PORT}:5432"
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        healthcheck:
+            test: [ "CMD-SHELL", "pg_isready --user ${POSTGRES_USER} --dbname ${POSTGRES_DB}" ]
+            interval: 15s
+            timeout: 10s
+            retries: 5
 
+    backend:
+        build:
+            context: ./backend/
+            dockerfile: Containerfile
+        container_name: backend
+        restart: on-failure
+        env_file:
+            - ./backend/.env.local
+            - ./backend/.env.production
+        ports:
+            - "${BACKEND_PORT}:3002"
+        depends_on:
+            postgres:
+                condition: service_healthy
+        healthcheck:
+            test: [ "CMD-SHELL", "curl -f http://localhost:${BACKEND_PORT}/db-check || exit 1" ]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    drizzle-gateway:
+        image: ghcr.io/drizzle-team/gateway:latest
+        container_name: drizzle-gateway
+        restart: always
+        ports:
+            - "${DRIZZLE_GATEWAY_PORT}:4983"
+        environment:
+            MASTERPASS: ${DRIZZLE_GATEWAY_MASTERPASS}
+            STORE_PATH: /app
+        depends_on:
+            postgres:
+                condition: service_healthy
+        volumes:
+            - drizzle-gateway:/app
 
 volumes:
-  pgdata:
+    pgdata:
+    drizzle-gateway:
