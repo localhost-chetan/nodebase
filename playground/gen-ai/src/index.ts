@@ -8,7 +8,11 @@ const llm = new Groq({
 
 const main = async () => {
     const response = await llm.chat.completions.create({
+        temperature: 0.8,
+        stop: "RAG",    // Stop generation when the model outputs "RAG"
+        max_completion_tokens: 100,
         model: "llama-3.1-8b-instant",
+        frequency_penalty: 1.5,
         messages: [
             {
                 // Define the system role to set the behavior of the assistant
@@ -17,12 +21,13 @@ const main = async () => {
             },
             {
                 role: "user",
-                content: "Hi",
+                content: "Hello",
             }
         ]
     })
 
     console.log("🚀 ~ index.ts:20 ~ main ~ response: ", response.choices.at(0)?.message.content);
+    // console.log("🚀 ~ index.ts:20 ~ main ~ response: ", response);
 }
 
 main()
