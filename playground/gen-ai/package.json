@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot ./src/index.ts"
+    "dev": "bun run --watch ./src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -13,6 +13,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "groq-sdk": "^0.37.0"
+    "groq-sdk": "^0.37.0",
+    "zod": "^4.1.13"
   }
 }
