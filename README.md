@@ -20,7 +20,7 @@ This repository contains a full-stack application with a separate backend and fr
 
 - **`backend`**: A server-side application built with Hono and Bun.
 - **`frontend`**: A client-side application built with Next.js.
-- **`drizzle-gateway`**: A service that provides a REST API for your Drizzle ORM schema.
+
 
 ## Project Structure
 
@@ -45,7 +45,6 @@ This repository contains a full-stack application with a separate backend and fr
 - **Language**: TypeScript
 - **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
 - **Database**: PostgreSQL
-- **API Gateway**: [Drizzle Gateway](https://orm.drizzle.team/drizzle-gateway/overview)
 
 ### Frontend
 
@@ -108,7 +107,6 @@ POSTGRES_PORT=3001
 POSTGRES_USER=your_username
 POSTGRES_PASSWORD=your_strong_password
 POSTGRES_DB=nodebase
-DRIZZLE_GATEWAY_PORT=3003
 ```
 
 **Note:** Replace `your_username` and `your_strong_password` with your desired credentials.
@@ -133,4 +131,3 @@ The database will now be running and accessible on port `3001`, and the Drizzle 
 -   **Backend**: `3002`
 -   **Frontend**: `3000`
 -   **Database**: `3001`
--   **Drizzle Gateway**: `3003`
