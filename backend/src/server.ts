@@ -2,11 +2,10 @@ import { Hono } from 'hono'
 import { db } from '@db/index'
 
 const app = new Hono()
-
-app
   .get('/', (c) => {
-    return c.text('Welcome to Nodebase')
+    return c.json('Welcome to Nodebase')
   })
+
   .get("/db-check", async (c) => {
     const currentDatabase = await db.execute("SELECT current_database()")
 
@@ -16,6 +15,10 @@ app
 
     return c.json({ status: "Database connected", currentDatabase: (currentDatabase as any).at(0).current_database })
   })
+
+
+export type AppType = typeof app
+
 
 export default {
   fetch: app.fetch,
