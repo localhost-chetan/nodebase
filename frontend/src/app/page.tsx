@@ -1,3 +1,4 @@
+import { Button } from "@shadcn/button";
 import { client } from "@lib/rpc-client";
 
 export default async function Page() {
@@ -8,9 +9,13 @@ export default async function Page() {
 		console.log("🚀 ------------------------------------------------------🚀");
 		console.log("🚀 ~ page.tsx:6 ~ data: ", data);
 		console.log("🚀 ------------------------------------------------------🚀");
-		return <div>{data}</div>;
+		return (<div>{data}
+			<Button>Click Here</Button>
+		</div>);
 	}
 
-	return <div>Failed to load data</div>;
+	return <div>Failed to load data
+
+	</div>;
 
 }

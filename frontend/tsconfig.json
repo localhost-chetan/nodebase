@@ -32,6 +32,15 @@
 			"@utils/*": [
 				"./src/utils/*"
 			],
+			"@hooks/*": [
+				"./src/hooks/*"
+			],
+			"@components/*": [
+				"./src/components/*"
+			],
+			"@shadcn/*": [
+				"./src/components/ui/*"
+			],
 			"@backend/*": [
 				"../backend/src/*"
 			]
