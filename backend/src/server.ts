@@ -22,5 +22,5 @@ export type AppType = typeof app
 
 export default {
   fetch: app.fetch,
-  port: process.env.PORT || 3002,
+  port: process.env.PORT ?? 3002,
 }

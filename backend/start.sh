@@ -12,6 +12,9 @@ echo "Running database migrations..."
 bun run ./out/migrate.js
 echo "Database migrations completed."
 
+echo "Cleaning up unnecessary files..."
+rm -rf ./node_modules/ package.json bun.lock drizzle/
+
 # Start the application
 echo "Starting application..."
 bun run ./out/src/server.js

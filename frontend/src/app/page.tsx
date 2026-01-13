@@ -8,8 +8,9 @@ export default async function Page() {
 		console.log("🚀 ------------------------------------------------------🚀");
 		console.log("🚀 ~ page.tsx:6 ~ data: ", data);
 		console.log("🚀 ------------------------------------------------------🚀");
+		return <div>{data}</div>;
 	}
 
+	return <div>Failed to load data</div>;
 
-	return <div>Welcome to Nodebase</div>;
 }
